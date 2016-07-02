@@ -1,16 +1,111 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.bj.calendarapp1.MainActivity">
+    android:background="@drawable/img_main_background"
+    android:orientation="vertical"
+    android:screenOrientation="sensorLandscape"
+    tools:context=".MainActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+    <RelativeLayout style="@style/style_calendar_titlebar"
+        android:layout_height="50dp">
+
+        <RelativeLayout style="@style/style_calendar_title_gregorian_container"
+            android:layout_width="200dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/linearLayout2"
+            android:layout_height="50dp"
+            android:layout_marginTop="0dp">
+
+            <ImageView
+                android:id="@+id/imgPreviousMonth"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:clickable="true"
+                android:contentDescription="@string/desc_previous_month"
+                android:onClick="onMenuImageClick"
+                android:src="@drawable/img_arrow_left"
+                android:layout_marginLeft="0dp"
+                android:layout_alignTop="@+id/imgNextMonth"
+                android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:id="@+id/imgNextMonth"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:contentDescription="@string/desc_next_month"
+                android:onClick="onMenuImageClick"
+                android:src="@drawable/img_arrow_right"
+                android:layout_marginRight="0dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:id="@+id/txtTitleGregorian"
+                style="@style/style_calendar_title_gregorian_text"
+                android:text="切換月"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+        <LinearLayout style="@style/style_calendar_title_detail_container"
+            android:layout_width="wrap_content"
+            android:id="@+id/linearLayout">
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/style_calendar_title_command_container"
+            android:id="@+id/linearLayout2">
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgPopupMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:contentDescription="@string/desc_popup_menu"
+            android:onClick="onMenuImageClick"
+            android:src="@drawable/img_option_menu"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp" />
+
+        <ImageView
+            android:id="@+id/imgToday"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:contentDescription="@string/desc_today"
+            android:onClick="onMenuImageClick"
+            android:src="@drawable/img_today"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/imgPopupMenu" />
+
+        <TextView
+            android:id="@+id/txtTitleAddition"
+            style="@style/style_calendar_title_addition_text"
+            android:text="今天有一場球賽"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_alignTop="@+id/txtTitleLunar"
+            android:layout_toEndOf="@+id/txtTitleLunar" />
+
+        <TextView
+            android:id="@+id/txtTitleLunar"
+            style="@style/style_calendar_title_lunar_text"
+            android:text="聖誕節"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
